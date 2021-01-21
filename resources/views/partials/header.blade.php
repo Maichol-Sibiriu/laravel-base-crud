@@ -9,7 +9,7 @@
                     <a href="{{ route('classrooms.index') }}">class rooms</a>
                 </li>
                 <li>
-                    <a href=""></a>
+                    <a href="{{ route('classrooms.create') }}">create</a>
                 </li>
                 <li>
                     <a href=""></a>

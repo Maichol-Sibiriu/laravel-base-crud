@@ -26,7 +26,7 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        //
+        return view('classrooms.create');
     }
 
     /**
@@ -37,7 +37,24 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $request->validate([
+
+           'name' => 'required|unique:classrooms|max:10',
+           'description' => 'required'
+
+        ]);
+
+        $classroom = new Classroom();
+        $classroom->name = $data['name'];
+        $classroom->description = $data['description'];
+        
+        $saved = $classroom->save();
+        
+        if($saved){
+           return redirect()->route('classrooms.show', $classroom->id);
+        }
     }
 
     /**
